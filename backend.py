@@ -16,11 +16,12 @@ def delete_db():
 
 
 def insert(title,author,year,isbn):
-    conn = sqlite3.connect("gui.db")
-    cur = conn.cursor()
-    cur.execute("INSERT INTO BOOKS VALUES(NULL,?,?,?,?)",(title,author,year,isbn))
-    conn.commit()
-    conn.close()
+    if(title!="" and author!="" and year!="" and isbn!=""):
+        conn = sqlite3.connect("gui.db")
+        cur = conn.cursor()
+        cur.execute("INSERT INTO BOOKS VALUES(NULL,?,?,?,?)",(title,author,year,isbn))
+        conn.commit()
+        conn.close()
 
 
 def delete(id):
